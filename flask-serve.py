@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -
 
+# remove UI segemnts
+# fix grids
+# layouts
+# files
 
 from flask import Flask
 from flask import render_template
