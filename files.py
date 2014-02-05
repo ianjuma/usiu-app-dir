@@ -1,9 +1,12 @@
 #! /usr/bin/env python
 
+# simple python script to get files but no dirs
+# JIW
+
 import os
 import sys
 
-dir = '/Data/software'
+dir = '.'
 
 software_folders = []
 
