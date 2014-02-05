@@ -5,41 +5,10 @@
 from flask import Flask
 from flask import render_template
 from flask.ext.assets import Environment, Bundle
-from flask.ext.cache import Cache
-# from flask import redirect
-
-"""
-RestLess -> JSON -> Oauth2 -> API
-Boto - ss3 -EC2 - Heroku - Dotcloud - Redis + Storage instances
-Redis in caching --Memcache
-MySQL as DB -with redis-cache
-Managing Sessions --Google API
-UI/UX --perfect + easy
-Android APP
-MongoDB --free from caching --oauth --google USIU domains --emails
-wjuma@students.usiu.ac.ke
-Mobile view optimizations --JQuery Mobile -> JQuery Mobile
-Managing sessions + logins google API --free from sessions
-libs + html5 biolerplate + UI
-Security -- domain name + product + about -- contact us -- developers -- Terms and Conditions
-HTTPS --NGINX --gevent + gunicorn + meinheld + uwsgi + double layer __>-->
-encryption for login + some pages or all
-
-Daemonize gunicorn+uWSGI -Managing sessions
-With mongoDB no need to cache -> in-memory DB
-
-Redis cache -> Memcache -> Load balancing/NGINX --Haproxy??
-SQUID Cache --httpd headers + http requests -> SQUID on its own server
-Database cache on same server
-"""
+from flask import redirect
 
 
 app = Flask(__name__)
-cache = Cache(app, with_jinja2_ext=True, config={'CACHE_TYPE': 'RedisCache'})
-cache.config = {'CACHE_REDIS_PASSWORD': ''}
-cache.config = {'CACHE_REDIS_HOST': '127.0.0.1'}
-cache.config = {'CACHE_REDIS_PORT': '6379'}
-cache.config = {'CACHE_DEFAULT_TIMEOUT': '5'}
 
 
 # app.config.from_pyfile(flask-config.cfg) -- import Config
@@ -59,7 +28,6 @@ def page_not_found(e):
         return "This developer is too lazy to write a 404 :D", 404
 
 
-@cache.cached(timeout=50)
 @app.route('/')
 def index():
     return render_template('index.html')
