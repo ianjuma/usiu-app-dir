@@ -13,7 +13,7 @@ software_folders = []
 # list comprehension on files
 try:
     # iterable
-    software_folders += [file for file in os.listdir(dir) if os.path.isfile(file)]
+    software_folders += [folder for folder in os.listdir(dir) if os.path.isdir(folder)]
 except IOError as e:
     print "I/O error({0}): {1}".format(e.errno, e.strerror)
 except OSError as e:
