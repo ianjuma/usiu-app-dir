@@ -1,0 +1,6 @@
+watchdog
+flask
+gunicorn
+gevent
+greenlet
+flask-Assets
