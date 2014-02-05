@@ -2,12 +2,14 @@ import sys
 import time
 import logging
 
+dir = '.'
+
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 
 from watchdog.events import FileSystemEvent
 fs = FileSystemEvent(
-    event_type='on_created', src_path='.', is_directory=False)
+    event_type='on_created', src_path=dir, is_directory=False)
 
 # daemonise the observer
 
