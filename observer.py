@@ -5,6 +5,12 @@ import logging
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 
+from watchdog.events import FileSystemEvent
+fs = FileSystemEvent(
+    event_type='on_created', src_path='.', is_directory=False)
+
+# daemonise the observer
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
