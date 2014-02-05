@@ -22,9 +22,7 @@
 
         <link rel="author" href="humans.txt">
     </head>
-    <body>
-
-      
+    <body> 
       
       <div class="ui very thin styled left sidebar">
         <div class="ui fluid vertical icon buttons">
@@ -101,6 +99,70 @@
         <script src="static/js/pace.min.js"></script>
 
         <script>
+          $('#hi')
+          .popup({
+            on: 'click'
+          })
+        ;
+        $('#hi')
+          .popup({
+            on: 'focus'
+          })
+        ;
+
+        $('.blue.idea.basic.icon')
+          .popup({
+            on: 'hover',
+            content: 'project ideas',
+            target: '.blue.idea.basic.icon',
+            inline: false
+          })
+        ;
+
+        $("#some").click(function() {
+          $('.ui.modal')
+          .modal('setting', {
+            closable  : false,
+            onDeny    : function() {
+              window.alert('Wait not yet!');
+              return false;
+            },
+            onApprove : function() {
+              window.alert('Approved!');
+            }
+          })
+          .modal('show');
+        });
+
+        $("#signup").click(function() {
+          $('.ui.large.modal')
+          .modal('setting', {
+            closable  : false,
+            onDeny    : function() {
+              window.alert('Wait not yet!');
+              return false;
+            },
+            onApprove : function() {
+              window.alert('Approved!');
+            }
+          })
+          .modal('show');
+        });
+
+        $('.ui.thin.very.sidebar')
+        .sidebar({
+          overlay: false
+        })
+        .sidebar('toggle');
+
+        $(document).ready(
+          function iniciar() {
+          $('.follow').on("click", function() {
+            $('.follow').css('background-color','#34CF7A');
+            $('.follow').html('<div class="icon-ok"></div> Voted');
+          });
+          }
+        );
 
         
 
