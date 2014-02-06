@@ -10,6 +10,7 @@ dir = '.'
 # fs events + handlers
 # add file/dir
 # remove file/dir
+# dir snapshots
 
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
@@ -33,6 +34,15 @@ all_events = FileSystemEvent(
 
 # daemonise the observer
 # on event x call
+
+def refreshDir():
+    event_handler = dirs.getDirs(dir)
+    observer =  Observer()
+    observer.schedule(event_handler, dir, recursive=True)
+    observer.setName('dir-observer')
+    observer.start()
+    # daemonize
+    observer.join()
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
