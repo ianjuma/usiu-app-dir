@@ -35,7 +35,7 @@ all_events = FileSystemEvent(
 # daemonise the observer
 # on event x call
 
-def refreshDir():
+def refreshDir(dir):
     event_handler = dirs.getDirs(dir)
     observer = Observer()
     observer.schedule(event_handler, dir, recursive=True)
@@ -44,7 +44,7 @@ def refreshDir():
     # daemonize
     observer.join()
 
-
+"""
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
@@ -60,3 +60,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
+"""
+
+if __name__ == "__main__":
+    refreshDir(dir)
