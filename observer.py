@@ -1,23 +1,44 @@
 import sys
 import time
 import logging
+import files
+import dirs
 
 dir = '.'
+
+# event handler
+# fs events + handlers
+# add file/dir
+# remove file/dir
 
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 
 from watchdog.events import FileSystemEvent
-fs = FileSystemEvent(
+file_created = FileSystemEvent(
     event_type='on_created', src_path=dir, is_directory=False)
 
+file_deleted = FileSystemEvent(
+    event_type='on_deleted', src_path=dir, is_directory=False)
+
+folder_created = FileSystemEvent(
+    event_type='on_created', src_path=dir, is_directory=True)
+
+folder_deleted = FileSystemEvent(
+    event_type='on_deleted', src_path=dir, is_directory=True)
+
+all_events = FileSystemEvent(
+    event_type='on_any_event', src_path=dir, is_directory=True)
+
+
 # daemonise the observer
+# on event x call
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
-    path = sys.argv[1] if len(sys.argv) > 1 else '.'
+    path = sys.argv[1] if len(sys.argv) > 1 else dir
     event_handler = LoggingEventHandler()
     observer = Observer()
     observer.schedule(event_handler, path, recursive=True)
