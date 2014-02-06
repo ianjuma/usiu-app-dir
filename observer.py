@@ -37,12 +37,13 @@ all_events = FileSystemEvent(
 
 def refreshDir():
     event_handler = dirs.getDirs(dir)
-    observer =  Observer()
+    observer = Observer()
     observer.schedule(event_handler, dir, recursive=True)
     observer.setName('dir-observer')
     observer.start()
     # daemonize
     observer.join()
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
