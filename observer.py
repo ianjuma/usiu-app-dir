@@ -40,8 +40,7 @@ all_events = FileSystemEvent(
 # on event x call
 
 def refreshDir(populate):
-    dirsnapshot.DirectorySnapshot(path=dir, recursive=True,
-                                  walker_callback=dirs.getDirs(populate))
+    # dirsnapshot.DirectorySnapshot(path=dir, recursive=True)
     event_handler = dirs.getDirs(populate)
     observer = Observer()
     observer.schedule(event_handler, dir, recursive=True)
