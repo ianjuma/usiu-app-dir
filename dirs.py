@@ -27,6 +27,7 @@ def getDirs(software_folders):
         raise
         # print software_folders
 
+
 if __name__ == "__main__":
     getDirs(software_folders)
     print software_folders
