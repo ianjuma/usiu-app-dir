@@ -3,8 +3,10 @@ import time
 import logging
 import files
 import dirs
+from dirs import software_folders
 
 dir = '.'
+populate = []
 
 # event handler
 # fs events + handlers
@@ -14,6 +16,8 @@ dir = '.'
 
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
+from watchdog.utils import dirsnapshot
+
 
 from watchdog.events import FileSystemEvent
 file_created = FileSystemEvent(
@@ -35,14 +39,17 @@ all_events = FileSystemEvent(
 # daemonise the observer
 # on event x call
 
-def refreshDir(dir):
-    event_handler = dirs.getDirs(dir)
+def refreshDir(populate):
+    dirsnapshot.DirectorySnapshot(path=dir, recursive=True,
+                                  walker_callback=dirs.getDirs(populate))
+    event_handler = dirs.getDirs(populate)
     observer = Observer()
     observer.schedule(event_handler, dir, recursive=True)
     observer.setName('dir-observer')
     observer.start()
     # daemonize
     observer.join()
+
 
 """
 if __name__ == "__main__":
@@ -63,4 +70,4 @@ if __name__ == "__main__":
 """
 
 if __name__ == "__main__":
-    refreshDir(dir)
+    refreshDir(populate)
