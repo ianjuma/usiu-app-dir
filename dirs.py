@@ -3,6 +3,7 @@
 # simple python script to get dirs only
 # JIW
 
+
 import os
 import sys
 
