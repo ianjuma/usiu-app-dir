@@ -27,6 +27,6 @@ def getFile(software_files):
         raise
 
 
-if __name__ == "__main__":
-    getFile(software_files)
-    print software_files
+#if __name__ == "__main__":
+#    getFile(software_files)
+#    print software_files
