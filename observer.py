@@ -39,22 +39,25 @@ all_events = FileSystemEvent(
 # daemonise the observer
 # on event x call
 
-def refreshDir(populate):
+def refreshDir():
     # dirsnapshot.DirectorySnapshot(path=dir, recursive=True)
     event_handler = dirs.getDirs(populate)
     observer = Observer()
     observer.schedule(event_handler, dir, recursive=True)
-    observer.setName('dir-observer')
+    # observer.setName('dir-observer')
     observer.start()
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
     # daemonize
     observer.join()
-
 
 """
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(message)s',
-                        datefmt='%Y-%m-%d %H:%M:%S')
+                       format='%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     path = sys.argv[1] if len(sys.argv) > 1 else dir
     event_handler = LoggingEventHandler()
     observer = Observer()
@@ -69,4 +72,4 @@ if __name__ == "__main__":
 """
 
 if __name__ == "__main__":
-    refreshDir(populate)
+    refreshDir()
