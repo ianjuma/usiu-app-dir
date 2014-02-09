@@ -26,9 +26,8 @@ def getDirs(software_folders):
     except:
         print "Unexpected error:", sys.exc_info()[0]
         raise
-        # print software_folders
 
 
-if __name__ == "__main__":
-    getDirs(software_folders)
-    print software_folders
+#if __name__ == "__main__":
+#    getDirs(software_folders)
+#    print software_folders
