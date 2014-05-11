@@ -1,0 +1,17 @@
+{% extends "basedashboard2.html" %}
+{% block title %}Bench Care : Add Patient{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Add Patient Visits</h1>
+
+<form action= "{% url "visits" %}" method = "POST"
+{% csrf_token %}
+
+<ul>
+	{% csrf_token %}
+		{{form| crispy}}
+</ul>
+<input type = "submit" value="Save">
+</form>
+
+    {% endblock %}

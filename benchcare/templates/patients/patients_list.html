@@ -1,0 +1,14 @@
+{% extends "basedashboard2.html" %}
+{% block title %}Bench Care : Patient List{% endblock %}
+{% block content %}
+<h1 align = "centre">PATIENTS</h1>
+</br>
+</br>
+<ul>
+	{% for patient in object_list %}
+	<li>{{ patient}}</li>
+	{% endfor %}
+</ul>
+
+
+{% endblock %}

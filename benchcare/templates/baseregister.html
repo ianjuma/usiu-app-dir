@@ -1,0 +1,75 @@
+{% load static %} <!-- New line -->
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<title>Register</title>
+<link href="{% static "Code/css/style.css" %}" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+	<div id="box_bg">
+	 <a href="/"><img src=" {% static "images/logo2.png" %}" alt="image" title="Benchcare Logo"></a>
+	</div>
+
+
+<!-- Box Start-->
+<div id="box_bg">
+
+<div id="content">
+
+	<h1 class="blue">Register</h1>
+
+	<!-- Register Fields -->
+	<div id="reg">
+	
+		<form action="#" method="POST" id="login-form">
+		
+			<fieldset>
+
+				
+   {% csrf_token %}
+  {% crispy form %}
+
+  
+
+	
+	
+	<!-- Blue Button -->
+	<div class="button blue"><input type="submit" value="{% trans 'Submit' %}" /></div>
+	</form>
+	</div>
+	
+	
+	<!-- Checkbox -->
+	<div class="checkbox">
+	<li>
+	<fieldset>
+	<![if !IE | (gte IE 8)]><legend id="title2" class="desc"></legend><![endif]>
+	<!--[if lt IE 8]><label id="title2" class="desc"></label><![endif]-->
+	<div>
+		<span>
+		<input id="Field" name="Field" type="checkbox" class="field checkbox" value="First Choice" tabindex="4" onchange="handleInput(this);" />
+		
+		</span>
+	</div>
+	</fieldset>
+	</li>
+	</div>
+
+</div>
+</div>
+
+<!-- Text Under Box -->
+<div id="bottom_text">
+	Already have an account? <a id="blue" href="/accounts/login">Sign In</a><br/>
+</div>
+
+</body>
+</html>
